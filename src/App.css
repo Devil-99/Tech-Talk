@@ -1,4 +1,24 @@
 .App {
   text-align: center;
-  background-color: bisque;
+}
+.app_form{
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 95%;
+  border-radius: 30px;
+  margin: 20px;
+  background-color: rgb(230, 230, 230);
+}
+.app_formctrl{
+  display: flex !important;
+  flex-direction: row !important;
+}
+.app_input{
+  flex: 1 !important;
+  margin-right: 10px !important;
+}
+.app_button{
+  flex: 0 !important;
 }

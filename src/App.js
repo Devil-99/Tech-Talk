@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import {Button,FormControl,InputLabel,Input} from '@material-ui/core';
+import {Button,FormControl,InputLabel,Input,} from '@material-ui/core';
 import './App.css';
 import Messege from './Messege';
 import db from './firebase';
@@ -49,14 +49,14 @@ function App() {
   }
   return (
     <div className="App">
-      <h3>Welcome {username}</h3>
-      <form>
+      <h1>Welcome {username}</h1>
+      <form className="app_form">
       {/* Its a trick to click the button by hitting enter,just wrap this into a form and typecast the button into submit */}
 
-      <FormControl>
+      <FormControl className="app_formctrl">
       <InputLabel>Send Messege</InputLabel>
-      <Input value={input} onChange={event=>setInput(event.target.value)}/>
-      <Button disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessege}>Send Messege</Button>
+      <Input className="app_input" placeholder='Enter a messege...' value={input} onChange={event=>setInput(event.target.value)}/>
+      <Button  className="app_button" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessege}>Send</Button>
       </FormControl>
       </form>
 
