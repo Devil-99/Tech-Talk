@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import {Button,FormControl,InputLabel,Input,} from '@material-ui/core';
+import {Button,FormControl,Input,} from '@material-ui/core';
 import './App.css';
 import Messege from './Messege';
 import db from './firebase';
@@ -22,7 +22,8 @@ function App() {
     //  docs.data = text and username in object form just like {username:'Soumalya' , text:"Amazon intern is here"} this
 
     db.collection('messages').orderBy('timeStamp','desc').onSnapshot(snapshot=>{
-      setMessege(snapshot.docs.map(doc => doc.data()));
+      setMessege(snapshot.docs.map(doc =>doc.data() ));
+      
     });
   }, [])
 
@@ -54,7 +55,6 @@ function App() {
       {/* Its a trick to click the button by hitting enter,just wrap this into a form and typecast the button into submit */}
 
       <FormControl className="app_formctrl">
-      <InputLabel>Send Messege</InputLabel>
       <Input className="app_input" placeholder='Enter a messege...' value={input} onChange={event=>setInput(event.target.value)}/>
       <Button  className="app_button" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessege}>Send</Button>
       </FormControl>
@@ -63,7 +63,7 @@ function App() {
     <FlipMove>
     { // print the value on screen(jsx) - map is like a auto keyword.it automatically traverse the array without any loop
         messege.map(msg=>(
-          <Messege userName={username} msg={msg} />
+          <Messege key={msg.id} userName={username} msg={msg} />
         ))
       }
     </FlipMove>

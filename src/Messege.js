@@ -3,7 +3,7 @@ import React,{ forwardRef }  from 'react';
 import './Messege.css';
 
 // write "rfce" - this code snippet 
-const Messege = forwardRef(({userName,msg},ref) => {      // forwardRef is a higher order function that basically wrapping all the masseges for the animation
+const Messege = forwardRef( ( {msg,userName} ,ref) => {      // forwardRef is a higher order function that basically wrapping all the masseges for the animation
     const isUser = userName===msg.username;
     return (
         // ref is basically providing reference to each masseges
