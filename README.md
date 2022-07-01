@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Tech-Talk
+This project is a simple chatting website created using React JS.Deployed in Firebase and used Firestore database.
+
+The web-app run on - [this](https://techtalk-50225.web.app/)
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

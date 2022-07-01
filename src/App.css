@@ -1,29 +1,59 @@
-body{
+.background{
   width: 100%;
-  background-color: rgb(180, 255, 164);
+  position: fixed;
+  z-index: -1;
+}
+.image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .App {
   color: black;
   text-align: center;
 }
+
+.head{
+  width: 100%;
+  background-color: rgba(26, 26, 26, 0.753);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px dotted rgba(122, 255, 117, 0.692);
+  border-radius: 5px;
+}
+h1{
+  font-family: cursive;
+  margin: 5px;
+  padding: 6px;
+}
 .app_form{
-  padding: 20px;
+  margin: 10px !important;
+  padding: 10px 10px 10px 20px;
   position: fixed;
   bottom: 0;
   z-index: 1;
   width: 95%;
   border-radius: 30px;
   margin: 20px;
-  background-color: rgb(255, 203, 203);
+  background-color: rgb(113, 243, 119);
 }
 .app_formctrl{
   display: flex !important;
   flex-direction: row !important;
 }
 .app_input{
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: black !important;
+  padding: 0px 5px 0px 5px !important;
   flex: 1 !important;
-  margin-right: 10px !important;
+  margin: 0px 5px 5px 0px !important;
 }
 .app_button{
+  padding: 5px !important;
+  margin: 5px !important;
   flex: 0 !important;
 }

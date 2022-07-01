@@ -1,16 +1,29 @@
 .messege_card{
-    padding: 10px;
+    padding-left: 10px;
     margin: 10px;
     width: fit-content;
 }
 .messege_user{
+    padding-right: 10px !important;
     margin-left: auto;
     color: white;
     text-align: left !important;
 }
 .user_card{
-    background-color: rgb(164, 255, 255) !important;
+    background-color: rgb(134, 255, 255) !important;
 }
 .guest_card{
     background-color: rgb(255, 148, 175) !important;
+}
+.card-content{
+    padding: 10px 5px 10px 10px !important;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+.typo-graph{
+    font-family: Comic Sans MS, Comic Sans, cursive !important;
+    font-weight: 500 !important;
+    font-size: 22px !important;
+    padding-right: 15px;
 }
