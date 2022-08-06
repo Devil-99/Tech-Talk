@@ -3,7 +3,7 @@ import {Button,FormControl,Input,} from '@material-ui/core';
 import './App.css';
 import Messege from './Messege';
 import db from './firebase';
-import Firebase from 'firebase';
+import { setDoc, doc, collection, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
 import FlipMove from 'react-flip-move';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,42 +14,42 @@ function App() {
     {username:'Souvik' , text:"Hey! Souvik is here"},
   ]);
   const [username,setUsername]=useState('')
+  const ref = collection(db, "Global_user");
 
-  // useState = to change the state variable in react
-  // useEffect = run code on a condition in react
-
-  useEffect(()=>{
-    //  snapshot = all the messeges with different ids in object form
-    //  doc.data = text and username in object form just like {username:'Soumalya' , text:"Amazon intern is here"} this
-
-    db.collection("Global_user").orderBy('timeStamp','desc').onSnapshot(snapshot=>{
-      setMessege(snapshot.docs.map(doc =>doc.data() ));
-    });
-  }, [])
-
+  // The alert pop-up window
   useEffect(() => {
-    setUsername(prompt('Please enter your name Here!'))
+    setUsername(prompt('Enter only your name in Camel Case'))
     // when it is empty inside [] ,means this code runs once when app component loads
   }, [])
 
-  // console.log(input);
-  // console.log(messege);
+  function show(){
+    const q = query(ref, orderBy('timeStamp','desc'));
+    onSnapshot(q, (snpsht)=>{
+      const item=[];
+      snpsht.docs.forEach(doc => {
+        item.push(doc.data());
+      });
+      setMessege(item);
+    });
+  }
 
   const sendMessege=(xyz)=>{
     //event.preventDefault(); // submit button generally refresh the page so This will stop the page from refreshing
 
-    db.collection("Global_user")
-    .doc(xyz.id)
-    .set({
+    const docRef = doc(db, "Global_user", xyz.id);
+    setDoc(docRef,{
       id:xyz.id,
       text:xyz.input,
       username:xyz.username,
-      timeStamp: Firebase.firestore.FieldValue.serverTimestamp() // this is using the database's timezone not user timezone so that user from diff country can also use
+      timeStamp: serverTimestamp() // this is using the database's timezone not user timezone so that user from diff country can also use
     })
 
     // setMessege([...messege,{username:username,text:input}]); // "...messege" is used to append the array.without this the array will get updated every time
     setInput('');
   }
+
+  show();
+
   return (
     <div className="App">
 
@@ -72,7 +72,7 @@ function App() {
     <FlipMove className="flipmoveclass messege-wrapper" >
     { // print the value on screen(jsx) - map is like a auto keyword.it automatically traverse the array without any loop
         messege.map(msg=>(
-          <Messege key={msg.id} userName={username} msg={msg} />
+          <Messege key={msg.id} userName={username} msg={msg}/>
         ))
       }
     </FlipMove>

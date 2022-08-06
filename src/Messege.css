@@ -16,10 +16,16 @@
     background-color: rgb(255, 148, 175) !important;
 }
 .card-content{
-    padding: 10px 5px 10px 10px !important;
+    padding: 10px 10px 10px 10px !important;
     display: flex;
     flex-direction: row;
     cursor: pointer;
+}
+.user_time{
+    text-align: left !important;
+}
+.guest_time{
+    text-align: right !important;
 }
 .typo-graph{
     font-family: Comic Sans MS, Comic Sans, cursive !important;
